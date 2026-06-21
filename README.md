@@ -16,16 +16,16 @@
 
 - Membantu masyarakat memilih tanaman yang tepat berdasarkan kondisi lahan dan kebutuhan mereka
 - Mengimplementasikan sistem pakar berbasis aturan (rule-based expert system) sebagai tugas kuliah
-- Menampilkan transparansi keputusan melalui *explanation facility*
+- Menampilkan transparansi keputusan melalui _explanation facility_
 
 ### Output Tanaman
 
-| Tanaman | Gambar |
-|---|---|
-| Cabai | ![Cabai](/images/cabai.webp) |
-| Tomat | ![Tomat](/images/tomat.webp) |
-| Terong | ![Terong](/images/terong.webp) |
-| Kangkung | ![Kangkung](/images/kangkung.webp) |
+| Tanaman     | Gambar                                   |
+| ----------- | ---------------------------------------- |
+| Cabai       | ![Cabai](/images/cabai.webp)             |
+| Tomat       | ![Tomat](/images/tomat.webp)             |
+| Terong      | ![Terong](/images/terong.webp)           |
+| Kangkung    | ![Kangkung](/images/kangkung.webp)       |
 | Daun Bawang | ![Daun Bawang](/images/daun-bawang.webp) |
 
 ---
@@ -34,37 +34,37 @@
 
 ### Core
 
-| Layer | Teknologi | Versi |
-|---|---|---|
-| Runtime | Bun | Latest (1.x) |
-| Framework | SvelteKit | 2.x |
-| Language | TypeScript | 5.x |
-| Styling | Tailwind CSS | 4.x |
-| Component | daisyUI | Latest |
+| Layer     | Teknologi    | Versi        |
+| --------- | ------------ | ------------ |
+| Runtime   | Bun          | Latest (1.x) |
+| Framework | SvelteKit    | 2.x          |
+| Language  | TypeScript   | 5.x          |
+| Styling   | Tailwind CSS | 4.x          |
+| Component | daisyUI      | Latest       |
 
 ### Backend & Data
 
-| Layer | Teknologi | Keterangan |
-|---|---|---|
-| ORM | Drizzle ORM | Type-safe, ringan |
-| Database | Neon PostgreSQL | Serverless, gratis tier |
-| API | SvelteKit `+server.ts` | Built-in, tidak butuh framework terpisah |
+| Layer    | Teknologi              | Keterangan                               |
+| -------- | ---------------------- | ---------------------------------------- |
+| ORM      | Drizzle ORM            | Type-safe, ringan                        |
+| Database | Neon PostgreSQL        | Serverless, gratis tier                  |
+| API      | SvelteKit `+server.ts` | Built-in, tidak butuh framework terpisah |
 
 ### Frontend
 
-| Kebutuhan | Teknologi | Keterangan |
-|---|---|---|
-| Visualisasi chart | Chart.js | Bar chart skor tanaman |
-| Export PDF | jsPDF | Download hasil konsultasi |
-| Icon | Lucide Svelte | Icon library ringan |
+| Kebutuhan         | Teknologi     | Keterangan                |
+| ----------------- | ------------- | ------------------------- |
+| Visualisasi chart | Chart.js      | Bar chart skor tanaman    |
+| Export PDF        | jsPDF         | Download hasil konsultasi |
+| Icon              | Lucide Svelte | Icon library ringan       |
 
 ### DevOps
 
-| Kebutuhan | Teknologi |
-|---|---|
-| Deploy | Vercel |
-| Version Control | GitHub |
-| Package Manager | Bun |
+| Kebutuhan       | Teknologi |
+| --------------- | --------- |
+| Deploy          | Vercel    |
+| Version Control | GitHub    |
+| Package Manager | Bun       |
 
 ### Mengapa SvelteKit?
 
@@ -88,36 +88,37 @@
 ### Fitur Utama (Wajib)
 
 #### 1. Form Konsultasi Wizard
+
 - Input dibagi 4 step sesuai kategori rules: Lingkungan, Pemilik, Keuangan, Tujuan
 - Validasi per step sebelum lanjut ke step berikutnya
 - Progress indicator di bagian atas
 
 **Input yang dikumpulkan:**
 
-| Field | Tipe | Pilihan |
-|---|---|---|
-| Luas pekarangan | Number | Input angka (m²) |
-| Intensitas matahari | Select | Penuh / Sebagian / Teduh |
-| Ketersediaan air | Select | Mudah / Terbatas |
-| Kondisi tanah | Select | Subur / Pot/Polybag |
-| Waktu perawatan | Select | Sibuk / Cukup |
-| Pengalaman berkebun | Select | Pemula / Berpengalaman |
-| Ada anak kecil | Toggle | Ya / Tidak |
-| Jumlah anggota keluarga | Number | Input angka |
-| Budget awal | Select | Rendah / Sedang / Tinggi |
-| Tujuan finansial | Select | Hemat belanja / Jual hasil |
-| Tujuan utama | Select | Konsumsi / Estetika / Edukasi / Pangan / Bisnis |
+| Field                   | Tipe   | Pilihan                                         |
+| ----------------------- | ------ | ----------------------------------------------- |
+| Luas pekarangan         | Number | Input angka (m²)                                |
+| Intensitas matahari     | Select | Penuh / Sebagian / Teduh                        |
+| Ketersediaan air        | Select | Mudah / Terbatas                                |
+| Kondisi tanah           | Select | Subur / Pot/Polybag                             |
+| Waktu perawatan         | Select | Sibuk / Cukup                                   |
+| Pengalaman berkebun     | Select | Pemula / Berpengalaman                          |
+| Ada anak kecil          | Toggle | Ya / Tidak                                      |
+| Jumlah anggota keluarga | Number | Input angka                                     |
+| Budget awal             | Select | Rendah / Sedang / Tinggi                        |
+| Tujuan finansial        | Select | Hemat belanja / Jual hasil                      |
+| Tujuan utama            | Select | Konsumsi / Estetika / Edukasi / Pangan / Bisnis |
 
 **Input tambahan — Kualitas Tanah (opsional):**
 
 Ditampilkan sebagai blok tambahan di Step 1 (Lingkungan), dengan checkbox di depan tiap field. Field yang tidak dicentang akan di-skip — rule terkait tidak dievaluasi dan tidak mempengaruhi skor.
 
-| Field | Tipe | Pilihan |
-|---|---|---|
-| pH tanah | Number | Input angka (contoh: 6.5) |
-| Suhu tanah | Number | Input angka (°C) |
+| Field         | Tipe   | Pilihan                                   |
+| ------------- | ------ | ----------------------------------------- |
+| pH tanah      | Number | Input angka (contoh: 6.5)                 |
+| Suhu tanah    | Number | Input angka (°C)                          |
 | Tekstur tanah | Select | Lempung berpasir / Lempung / Pasir / Liat |
-| Drainase | Select | Baik / Sedang / Buruk |
+| Drainase      | Select | Baik / Sedang / Buruk                     |
 
 Mockup tampilan:
 
@@ -132,44 +133,53 @@ Kondisi Tanah (Opsional — lewati jika tidak tahu)
 > 💡 Kalau mau minimal tapi tetap berguna: cukup wajibkan **Tekstur** dan **Drainase**, karena dua-duanya bisa diketahui tanpa alat khusus (diraba / diamati setelah hujan). pH dan suhu tanah dibiarkan opsional penuh karena butuh alat ukur (kertas lakmus, termometer tanah).
 
 #### 2. Inference Engine (Forward Chaining)
+
 - Evaluasi seluruh 39 rules secara sekuensial (24 wajib + 15 opsional kualitas tanah)
 - Akumulasi skor per tanaman dari setiap rule yang terpenuhi
 - Ranking otomatis berdasarkan total skor
 
 #### 3. Halaman Hasil Rekomendasi
+
 - Ranking tanaman dari yang paling direkomendasikan
 - Label otomatis: **Sangat Direkomendasikan** / **Direkomendasikan** / **Cukup Sesuai**
 - Skor numerik per tanaman
 
 #### 4. Explanation Facility
+
 - Daftar rules yang aktif (fired rules) pada sesi konsultasi tersebut
 - Per tanaman: ditampilkan rules mana saja yang berkontribusi beserta alasan teksnya
 - Ini yang membedakan sistem pakar dari kalkulator biasa — keputusan transparan dan dapat dijelaskan
 
 #### 5. Konsultasi Ulang
+
 - Tombol reset untuk kembali ke form awal
 - State form dibersihkan penuh
 
 ### Fitur Tambahan (Nilai Lebih)
 
 #### 6. Visualisasi Skor
+
 - Bar chart horizontal perbandingan skor semua tanaman menggunakan Chart.js
 - Warna berbeda per tanaman
 
 #### 7. Halaman Knowledge Base
+
 - Tabel semua 39 rules yang dapat dilihat publik (24 wajib + 15 opsional kualitas tanah)
 - Dikelompokkan per kategori: Lingkungan, Pemilik, Keuangan, Tujuan
 - Menampilkan ID rule, kondisi, tanaman yang terpengaruh, dan alasan
 
 #### 8. Info Tanaman
+
 - Per tanaman: deskripsi singkat, estimasi waktu panen, tips perawatan dasar
 - Disimpan sebagai data statis di file `.ts`
 
 #### 9. Log Riwayat Konsultasi
+
 - Setiap sesi konsultasi disimpan ke database
 - Halaman history menampilkan tabel: tanggal, jumlah rules aktif, tanaman teratas
 
 #### 10. Export PDF
+
 - Tombol download hasil konsultasi sebagai PDF menggunakan jsPDF
 - Berisi: input user, ranking tanaman, rules aktif, alasan per tanaman
 
@@ -213,37 +223,40 @@ bun dev
 ### File Konfigurasi Penting
 
 **`vercel.json`** — aktifkan Bun Runtime:
+
 ```json
 {
-  "bunVersion": "1.x"
+	"bunVersion": "1.x"
 }
 ```
 
 **`drizzle.config.ts`:**
+
 ```typescript
-import { defineConfig } from "drizzle-kit"
+import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
-  schema: "./src/db/schema.ts",
-  out: "./drizzle",
-  dialect: "postgresql",
-  dbCredentials: {
-    url: process.env.DATABASE_URL!,
-  },
-})
+	schema: './src/db/schema.ts',
+	out: './drizzle',
+	dialect: 'postgresql',
+	dbCredentials: {
+		url: process.env.DATABASE_URL!
+	}
+});
 ```
 
 **`svelte.config.js`:**
+
 ```javascript
-import adapter from "@sveltejs/adapter-vercel"
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte"
+import adapter from '@sveltejs/adapter-vercel';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 export default {
-  preprocess: vitePreprocess(),
-  kit: {
-    adapter: adapter(),
-  },
-}
+	preprocess: vitePreprocess(),
+	kit: {
+		adapter: adapter()
+	}
+};
 ```
 
 ---
@@ -274,8 +287,8 @@ vercel deploy
 
 ### Environment Variables di Vercel
 
-| Key | Value |
-|---|---|
+| Key            | Value                                 |
+| -------------- | ------------------------------------- |
 | `DATABASE_URL` | Connection string dari Neon dashboard |
 
 ### Catatan Bun di Vercel
@@ -285,7 +298,7 @@ Bun Runtime di Vercel tersedia sebagai **Public Beta** sejak Oktober 2025. Aktif
 ```json
 // vercel.json
 {
-  "bunVersion": "1.x"
+	"bunVersion": "1.x"
 }
 ```
 
@@ -304,4 +317,4 @@ Vercel mengelola minor version Bun secara otomatis. `Bun.serve` belum didukung d
 
 ---
 
-*Dokumentasi ini dibuat untuk keperluan tugas kuliah Sistem Pakar — Universitas AKPRIND Indonesia.*
+_Dokumentasi ini dibuat untuk keperluan tugas kuliah Sistem Pakar — Universitas AKPRIND Indonesia._

@@ -119,15 +119,15 @@ Hanya 1 tabel — untuk log setiap sesi konsultasi.
 
 ```typescript
 // src/db/schema.ts
-import { pgTable, uuid, jsonb, integer, timestamp } from "drizzle-orm/pg-core"
+import { pgTable, uuid, jsonb, integer, timestamp } from 'drizzle-orm/pg-core';
 
-export const konsultasi = pgTable("konsultasi", {
-  id:           uuid("id").defaultRandom().primaryKey(),
-  fakta:        jsonb("fakta").notNull(),        // input user as JSON
-  hasil:        jsonb("hasil").notNull(),         // ranked results as JSON
-  rules_aktif:  integer("rules_aktif"),           // jumlah rules yang fired
-  created_at:   timestamp("created_at").defaultNow(),
-})
+export const konsultasi = pgTable('konsultasi', {
+	id: uuid('id').defaultRandom().primaryKey(),
+	fakta: jsonb('fakta').notNull(), // input user as JSON
+	hasil: jsonb('hasil').notNull(), // ranked results as JSON
+	rules_aktif: integer('rules_aktif'), // jumlah rules yang fired
+	created_at: timestamp('created_at').defaultNow()
+});
 ```
 
 **Kenapa rules tidak disimpan di DB?**
@@ -144,53 +144,55 @@ Menerima fakta dari form, menjalankan inference, menyimpan log, dan mengembalika
 
 ```typescript
 // src/routes/api/konsultasi/+server.ts
-import { json } from "@sveltejs/kit"
-import type { RequestHandler } from "./$types"
-import { infer } from "$lib/inference"
-import { db } from "$lib/db"
-import { konsultasi } from "$db/schema"
+import { json } from '@sveltejs/kit';
+import type { RequestHandler } from './$types';
+import { infer } from '$lib/inference';
+import { db } from '$lib/db';
+import { konsultasi } from '$db/schema';
 
 export const POST: RequestHandler = async ({ request }) => {
-  const fakta = await request.json()
+	const fakta = await request.json();
 
-  // Jalankan inference engine
-  const hasil = infer(fakta)
+	// Jalankan inference engine
+	const hasil = infer(fakta);
 
-  // Simpan log ke Neon PostgreSQL
-  await db.insert(konsultasi).values({
-    fakta,
-    hasil: hasil.ranked,
-    rules_aktif: hasil.firedRules.length,
-  })
+	// Simpan log ke Neon PostgreSQL
+	await db.insert(konsultasi).values({
+		fakta,
+		hasil: hasil.ranked,
+		rules_aktif: hasil.firedRules.length
+	});
 
-  return json(hasil)
-}
+	return json(hasil);
+};
 ```
 
 **Request body:**
+
 ```json
 {
-  "luas": 12,
-  "matahari": "penuh",
-  "air": "mudah",
-  "tanah": "subur",
-  "waktu": "cukup",
-  "pengalaman": "pemula",
-  "ada_anak": false,
-  "jumlah_anggota": 4,
-  "budget": "sedang",
-  "tujuan_finansial": "hemat",
-  "tujuan": "konsumsi",
-  "ph": 6.5,
-  "suhu_tanah": null,
-  "tekstur": "lempung",
-  "drainase": "baik"
+	"luas": 12,
+	"matahari": "penuh",
+	"air": "mudah",
+	"tanah": "subur",
+	"waktu": "cukup",
+	"pengalaman": "pemula",
+	"ada_anak": false,
+	"jumlah_anggota": 4,
+	"budget": "sedang",
+	"tujuan_finansial": "hemat",
+	"tujuan": "konsumsi",
+	"ph": 6.5,
+	"suhu_tanah": null,
+	"tekstur": "lempung",
+	"drainase": "baik"
 }
 ```
 
 > Field kualitas tanah (`ph`, `suhu_tanah`, `tekstur`, `drainase`) bersifat opsional — kirim `null` kalau user tidak mengisi field tersebut di form.
 
 **Response:**
+
 ```json
 {
   "ranked": [
