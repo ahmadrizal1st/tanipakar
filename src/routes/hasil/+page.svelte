@@ -3,6 +3,9 @@
 	import { goto } from '$app/navigation';
 	import type { HasilInference } from '$lib/inference';
 	import type { Fakta } from '$lib/rules';
+	import SkorChart from './SkorChart.svelte';
+	import { plantsData } from '$lib/plants';
+	import ExportPDF from './ExportPDF.svelte';
 
 	let fakta = $state<Fakta | null>(null);
 	let rankedResults = $state<HasilInference['ranked']>([]);
@@ -48,7 +51,7 @@
 	}
 </script>
 
-<div class="space-y-6">
+<div class="space-y-6" id="pdf-content">
 	{#if !hasLoaded}
 		<div class="flex flex-col items-center justify-center py-16 space-y-4">
 			<span class="loading loading-spinner loading-lg text-primary"></span>
@@ -170,6 +173,10 @@
 			</div>
 		{/if}
 
+		{#if rankedResults.length > 0}
+			<SkorChart results={rankedResults} />
+		{/if}
+
 		<!-- Main Results List -->
 		{#if rankedResults.length === 0}
 			<div class="card bg-base-100 shadow-sm border border-base-300 p-8 text-center space-y-4">
@@ -193,9 +200,11 @@
 					Kombinasi jawaban Anda membuat sistem tidak menemukan tanaman yang memenuhi skor kecocokan
 					minimum. Coba sesuaikan luas lahan, paparan matahari, atau ketersediaan air Anda.
 				</p>
-				<button onclick={resetConsultation} class="btn btn-primary px-8 mt-2">
-					Konsultasi Ulang
-				</button>
+				<div class="no-print">
+					<button onclick={resetConsultation} class="btn btn-primary px-8 mt-2">
+						Konsultasi Ulang
+					</button>
+				</div>
 			</div>
 		{:else}
 			<div class="space-y-4">
@@ -264,6 +273,75 @@
 										{/each}
 									</ul>
 								</div>
+
+								<!-- Detail Tanaman -->
+								{#if plantsData[item.plant]}
+									{@const pData = plantsData[item.plant]}
+									<div class="mt-4 pt-4 border-t border-base-200 space-y-3">
+										<p class="text-sm text-base-content/80 leading-relaxed">{pData.description}</p>
+
+										<div class="flex flex-wrap gap-2 text-xs">
+											<span class="badge badge-outline gap-1 p-3 shadow-sm bg-base-100">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="14"
+													height="14"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													class="text-primary"
+													><circle cx="12" cy="12" r="10" /><polyline
+														points="12 6 12 12 16 14"
+													/></svg
+												>
+												Panen: {pData.harvestTime}
+											</span>
+											<span class="badge badge-outline gap-1 p-3 shadow-sm bg-base-100">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="14"
+													height="14"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													class="text-secondary"
+													><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg
+												>
+												Kesulitan: {pData.difficulty}
+											</span>
+										</div>
+
+										<div class="bg-primary/5 rounded-lg p-3.5 border border-primary/10 mt-2">
+											<span
+												class="text-xs font-bold text-primary flex items-center gap-1.5 uppercase tracking-wide mb-2"
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="14"
+													height="14"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2"
+													stroke-linecap="round"
+													stroke-linejoin="round"><path d="M2 12h4l3-9 5 18 3-9h5" /></svg
+												>
+												Tips Perawatan
+											</span>
+											<ul class="list-disc pl-5 space-y-1 text-xs text-base-content/80">
+												{#each pData.tips as tip (tip)}
+													<li>{tip}</li>
+												{/each}
+											</ul>
+										</div>
+									</div>
+								{/if}
 							</div>
 						</div>
 					</div>
@@ -271,10 +349,11 @@
 			</div>
 
 			<!-- Footer Buttons -->
-			<div class="flex justify-center items-center py-4">
-				<button onclick={resetConsultation} class="btn btn-primary px-8 w-full sm:w-auto">
+			<div class="flex justify-center items-center py-4 gap-3 no-print flex-col sm:flex-row">
+				<button onclick={resetConsultation} class="btn btn-primary px-8 w-full sm:w-auto shadow-sm">
 					Konsultasi Ulang
 				</button>
+				<ExportPDF targetId="pdf-content" />
 			</div>
 		{/if}
 	{/if}

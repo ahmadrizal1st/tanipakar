@@ -43,7 +43,44 @@
 				TaniPakar
 			</a>
 		</div>
-		<div class="flex-none">
+		<div class="flex-none flex items-center gap-1">
+			<a
+				href="/riwayat"
+				class="btn btn-ghost btn-sm font-medium hidden sm:flex text-base-content/80 hover:text-primary"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="mr-1"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg
+				>
+				Riwayat
+			</a>
+			<a
+				href="/knowledge-base"
+				class="btn btn-ghost btn-sm font-medium hidden sm:flex text-base-content/80 hover:text-primary"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="mr-1"
+					><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /></svg
+				>
+				Basis Pengetahuan
+			</a>
 			<button onclick={toggleTheme} class="btn btn-ghost btn-circle" aria-label="Toggle Theme">
 				{#if theme === 'dark'}
 					<!-- Sun icon -->
