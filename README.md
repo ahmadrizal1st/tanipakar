@@ -1,13 +1,14 @@
-<div align="center">
-  <img src="static/mascot.png" width="180" alt="TaniPakar Mascot">
-  <br>
-  <img src="static/logo.png" width="48" alt="TaniPakar Logo">
-  <h1>TaniPakar</h1>
-  <p><b>Sistem Pakar Rekomendasi Tanaman Pekarangan Rumah</b></p>
-  <p>Sistem pakar berbasis web untuk memberikan rekomendasi tanaman yang cocok ditanam di pekarangan rumah.<br>
-  Menggunakan metode <b>Forward Chaining</b> — memproses fakta dari input pengguna kemudian mencocokkan<br>
-  dengan rules yang telah didefinisikan oleh pakar, lalu menghasilkan rekomendasi berupa ranking tanaman beserta alasannya.</p>
-</div>
+<table>
+  <tr>
+    <td><img src="static/mascot.png" width="260" alt="TaniPakar Mascot"></td>
+    <td>
+      <img src="static/logo.png" width="48" alt="TaniPakar Logo">
+      <h1>TaniPakar</h1>
+      <p><b>Sistem Pakar Rekomendasi Tanaman Pekarangan Rumah</b></p>
+      <p>Sistem pakar berbasis web menggunakan metode <b>Forward Chaining</b> untuk memberikan rekomendasi tanaman yang cocok ditanam di pekarangan rumah beserta alasannya.</p>
+    </td>
+  </tr>
+</table>
 
 
 ## 📖 Dokumentasi Lengkap
