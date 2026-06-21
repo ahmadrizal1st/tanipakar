@@ -10,21 +10,22 @@
 			yang akurat.
 		</p>
 
-		<div class="pt-2">
-			<a
-				href="/konsultasi"
-				class="btn btn-primary btn-lg px-12 font-semibold shadow-sm w-full sm:w-auto"
-			>
-				Mulai Konsultasi
-			</a>
-		</div>
+		<!-- Mascot and Button Overlay Container -->
+		<div class="relative flex flex-col items-center w-full max-w-sm pb-6 mt-4">
+			<!-- Mascot standing behind (no border, no cropping, enlarged and shifted up) -->
+			<img
+				src="/mascot.png"
+				alt="TaniPakar Mascot"
+				class="w-72 md:w-80 h-auto object-contain select-none pointer-events-none -translate-y-6"
+			/>
 
-		<!-- Mascot Image - Centered below button, no border -->
-		<img
-			src="/mascot.png"
-			alt="TaniPakar Mascot"
-			class="w-44 h-44 md:w-52 md:h-52 object-cover rounded-2xl mt-4"
-		/>
+			<!-- Button in front of the mascot -->
+			<div class="absolute bottom-0 z-10 w-full flex justify-center">
+				<a href="/konsultasi" class="btn btn-primary btn-lg px-12 font-semibold shadow-lg">
+					Mulai Konsultasi
+				</a>
+			</div>
+		</div>
 	</div>
 
 	<!-- How it works -->
