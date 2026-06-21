@@ -1,14 +1,13 @@
-<table>
-  <tr>
-    <td><img src="static/mascot.png" width="260" alt="TaniPakar Mascot"></td>
-    <td>
+<div align="center">
+  <img src="static/mascot.png" width="225" alt="TaniPakar Mascot">
+  <br>
       <img src="static/logo.png" width="48" alt="TaniPakar Logo">
       <h1>TaniPakar</h1>
       <p><b>Sistem Pakar Rekomendasi Tanaman Pekarangan Rumah</b></p>
-      <p>Sistem pakar berbasis web menggunakan metode <b>Forward Chaining</b> untuk memberikan rekomendasi tanaman yang cocok ditanam di pekarangan rumah beserta alasannya.</p>
-    </td>
-  </tr>
-</table>
+  <p>Sistem pakar berbasis web untuk memberikan rekomendasi tanaman yang cocok ditanam di pekarangan rumah.<br>
+  Menggunakan metode <b>Forward Chaining</b> — memproses fakta dari input pengguna kemudian mencocokkan<br>
+  dengan rules yang telah didefinisikan oleh pakar, lalu menghasilkan rekomendasi berupa ranking tanaman beserta alasannya.</p>
+</div>
 
 
 ## 📖 Dokumentasi Lengkap
@@ -34,16 +33,10 @@
     <td align="center"><img src="static/plants/cabai.png" width="100" alt="Cabai"><br><b>Cabai</b></td>
     <td align="center"><img src="static/plants/tomat.png" width="100" alt="Tomat"><br><b>Tomat</b></td>
     <td align="center"><img src="static/plants/terong.png" width="100" alt="Terong"><br><b>Terong</b></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="static/plants/kangkung.png" width="100" alt="Kangkung"><br><b>Kangkung</b></td>
+	<td align="center"><img src="static/plants/kangkung.png" width="100" alt="Kangkung"><br><b>Kangkung</b></td>
     <td align="center"><img src="static/plants/daun_bawang.png" width="100" alt="Daun Bawang"><br><b>Daun Bawang</b></td>
     <td align="center"><img src="static/plants/bayam.png" width="100" alt="Bayam"><br><b>Bayam</b></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="static/plants/selada.png" width="100" alt="Selada"><br><b>Selada</b></td>
-    <td></td>
-    <td></td>
+	<td align="center"><img src="static/plants/selada.png" width="100" alt="Selada"><br><b>Selada</b></td>
   </tr>
 </table>
 
