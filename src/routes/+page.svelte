@@ -12,7 +12,7 @@
 
 		<!-- Mascot and Button Overlay Container -->
 		<div
-			class="relative flex flex-col items-center w-full max-w-xl md:max-w-2xl -mt-6 md:-mt-10 -mb-36"
+			class="relative flex flex-col items-center w-full max-w-xl md:max-w-2xl -mt-6 md:-mt-10 -mb-16"
 		>
 			<!-- Mascot standing behind (no border, no cropping, enlarged) -->
 			<img
@@ -22,7 +22,7 @@
 			/>
 
 			<!-- Button in front of the mascot, overlapping the pot area -->
-			<div class="absolute bottom-20 z-10 w-full flex justify-center">
+			<div class="absolute bottom-4 z-10 w-full flex justify-center">
 				<a href="/konsultasi" class="btn btn-primary btn-lg px-12 font-semibold shadow-lg">
 					Mulai Konsultasi
 				</a>
