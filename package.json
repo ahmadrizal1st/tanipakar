@@ -40,6 +40,7 @@
 		"@neondatabase/serverless": "^1.1.0",
 		"chart.js": "^4.5.1",
 		"drizzle-orm": "^0.45.2",
+		"html-to-image": "^1.11.13",
 		"html2canvas": "^1.4.1",
 		"jspdf": "^4.2.1",
 		"lucide-svelte": "^1.0.1"

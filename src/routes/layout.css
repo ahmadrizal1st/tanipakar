@@ -14,3 +14,23 @@
 	--color-primary: #3b82f6;
 	--color-primary-content: #ffffff;
 }
+
+@media print {
+	body {
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
+	.no-print,
+	.navbar,
+	footer {
+		display: none !important;
+	}
+	.card {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+	.break-inside-avoid {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+}

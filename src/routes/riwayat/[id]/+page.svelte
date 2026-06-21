@@ -1,42 +1,22 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
-	import type { HasilInference } from '$lib/inference';
+	import type { PageData } from './$types';
 	import type { Fakta } from '$lib/rules';
-	import SkorChart from './SkorChart.svelte';
+	import type { HasilInference } from '$lib/inference';
+	import SkorChart from '../../hasil/SkorChart.svelte';
 	import { plantsData } from '$lib/plants';
-	import ExportPDF from './ExportPDF.svelte';
+	import ExportPDF from '../../hasil/ExportPDF.svelte';
 
-	let fakta = $state<Fakta | null>(null);
-	let rankedResults = $state<HasilInference['ranked']>([]);
-	let hasLoaded = $state(false);
+	let { data } = $props<{ data: PageData }>();
 
-	onMount(() => {
-		try {
-			const factsRaw = sessionStorage.getItem('tanipakar_fakta');
-			const resultsRaw = sessionStorage.getItem('tanipakar_hasil');
-
-			if (!factsRaw || !resultsRaw) {
-				goto('/');
-				return;
-			}
-
-			fakta = JSON.parse(factsRaw);
-			const fullHasil = JSON.parse(resultsRaw);
-			rankedResults = fullHasil.ranked || [];
-		} catch (err: unknown) {
-			const error = err as Error;
-			console.error('Gagal memuat hasil dari sessionStorage:', error.message);
-			goto('/');
-		} finally {
-			hasLoaded = true;
-		}
-	});
-
-	function resetConsultation() {
-		sessionStorage.removeItem('tanipakar_fakta');
-		sessionStorage.removeItem('tanipakar_hasil');
-		goto('/');
+	function formatDate(dateStr: string | Date | null) {
+		if (!dateStr) return '-';
+		return new Date(dateStr).toLocaleDateString('id-ID', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit'
+		});
 	}
 
 	// Color level badge helper
@@ -52,19 +32,40 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Detail Rekomendasi - TaniPakar</title>
+</svelte:head>
+
 <div class="space-y-6" id="pdf-content">
-	{#if !hasLoaded}
+	{#await data.streamed.riwayat}
 		<div class="flex flex-col items-center justify-center py-16 space-y-4">
 			<span class="loading loading-spinner loading-lg text-primary"></span>
-			<p class="text-sm text-base-content/60">Memuat analisis...</p>
+			<p class="text-sm text-base-content/60">Memuat detail riwayat...</p>
 		</div>
-	{:else}
+	{:then riwayat}
+		{@const fakta = riwayat.fakta as unknown as Fakta}
+		{@const hasilObj = riwayat.hasil as unknown as { ranked: HasilInference['ranked'] }}
+		{@const rankedResults = Array.isArray(hasilObj) ? hasilObj : hasilObj?.ranked || []}
+
 		<!-- Header - Minimal & Professional -->
-		<div class="card bg-base-100 shadow-sm border border-base-300 p-8 text-center">
-			<h1 class="text-2xl font-bold text-base-content">Rekomendasi Tanaman Pekarangan</h1>
+		<div class="card bg-base-100 shadow-sm border border-base-300 p-8 text-center relative">
+			<a href="/riwayat" class="btn btn-sm btn-ghost absolute top-6 left-6 no-print">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"><path d="m15 18-6-6 6-6" /></svg
+				>
+				Kembali
+			</a>
+			<h1 class="text-2xl font-bold text-base-content mt-4 sm:mt-0">Detail Rekomendasi Tanaman</h1>
 			<p class="text-sm mt-2 text-base-content/60 max-w-lg mx-auto">
-				Berikut adalah hasil analisis kesesuaian tanaman pekarangan berdasarkan parameter kondisi
-				lingkungan, pemilik, keuangan, dan tujuan Anda.
+				Dibuat pada {formatDate(riwayat.created_at)}
 			</p>
 		</div>
 
@@ -139,27 +140,27 @@
 							<span class="block opacity-65 font-medium">Tujuan Utama:</span>
 							<span class="font-semibold text-base-content capitalize">{fakta.tujuan}</span>
 						</div>
-						{#if fakta.ph !== null}
+						{#if fakta.ph !== null && fakta.ph !== undefined}
 							<div>
 								<span class="block opacity-65 font-medium">pH Tanah:</span>
 								<span class="font-semibold text-base-content">{fakta.ph}</span>
 							</div>
 						{/if}
-						{#if fakta.suhu_tanah !== null}
+						{#if fakta.suhu_tanah !== null && fakta.suhu_tanah !== undefined}
 							<div>
 								<span class="block opacity-65 font-medium">Suhu Tanah:</span>
 								<span class="font-semibold text-base-content">{fakta.suhu_tanah} °C</span>
 							</div>
 						{/if}
-						{#if fakta.tekstur !== null}
+						{#if fakta.tekstur !== null && fakta.tekstur !== undefined}
 							<div>
 								<span class="block opacity-65 font-medium">Tekstur Tanah:</span>
 								<span class="font-semibold text-base-content capitalize"
-									>{fakta.tekstur.replace('_', ' ')}</span
+									>{String(fakta.tekstur).replace('_', ' ')}</span
 								>
 							</div>
 						{/if}
-						{#if fakta.drainase !== null}
+						{#if fakta.drainase !== null && fakta.drainase !== undefined}
 							<div>
 								<span class="block opacity-65 font-medium">Drainase Tanah:</span>
 								<span class="font-semibold text-base-content capitalize">{fakta.drainase}</span>
@@ -195,13 +196,8 @@
 				<h2 class="text-lg font-bold">Tidak Ada Tanaman yang Cocok</h2>
 				<p class="text-sm text-base-content/60 max-w-md mx-auto">
 					Kombinasi jawaban Anda membuat sistem tidak menemukan tanaman yang memenuhi skor kecocokan
-					minimum. Coba sesuaikan luas lahan, paparan matahari, atau ketersediaan air Anda.
+					minimum.
 				</p>
-				<div class="no-print">
-					<button onclick={resetConsultation} class="btn btn-primary px-8 mt-2">
-						Konsultasi Ulang
-					</button>
-				</div>
 			</div>
 		{:else}
 			<div class="space-y-4">
@@ -359,16 +355,39 @@
 							</div>
 						</div>
 					</div>
+				{:else}
+					<!-- fallback -->
 				{/each}
 			</div>
 
 			<!-- Footer Buttons -->
-			<div class="flex justify-center items-center py-4 gap-3 no-print flex-col sm:flex-row">
-				<button onclick={resetConsultation} class="btn btn-primary px-8 w-full sm:w-auto shadow-sm">
-					Konsultasi Ulang
-				</button>
+			<div class="flex justify-center items-center py-4 gap-3 no-print mt-6">
 				<ExportPDF targetId="pdf-content" />
 			</div>
 		{/if}
-	{/if}
+	{:catch}
+		<div class="p-12 text-center text-error border border-error/20 bg-error/5 rounded-xl">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="48"
+				height="48"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="mx-auto mb-4"
+				><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line
+					x1="12"
+					y1="16"
+					x2="12.01"
+					y2="16"
+				/></svg
+			>
+			<h2 class="text-lg font-bold">Gagal Memuat Detail</h2>
+			<p class="opacity-70 mt-2">Data riwayat yang Anda cari tidak ditemukan atau telah dihapus.</p>
+			<a href="/riwayat" class="btn btn-outline btn-sm mt-4">Kembali ke Riwayat</a>
+		</div>
+	{/await}
 </div>

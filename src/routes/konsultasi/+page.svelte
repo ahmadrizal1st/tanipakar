@@ -1,9 +1,20 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let step = $state(1);
 	let loading = $state(false);
 	let errorMsg = $state('');
+	let sessionId = $state('');
+
+	onMount(() => {
+		let storedId = localStorage.getItem('tanipakar_session_id');
+		if (!storedId) {
+			storedId = crypto.randomUUID();
+			localStorage.setItem('tanipakar_session_id', storedId);
+		}
+		sessionId = storedId;
+	});
 
 	// State Fakta
 	let luas = $state<number>(10);
@@ -124,7 +135,8 @@
 			jumlah_anggota,
 			budget,
 			tujuan_finansial,
-			tujuan
+			tujuan,
+			session_id: sessionId
 		};
 
 		try {
@@ -476,12 +488,16 @@
 					<!-- Kehadiran Anak Kecil -->
 					<div class="form-control w-full justify-center">
 						<label
-							class="label cursor-pointer justify-start gap-4 p-4 border border-base-300 rounded-lg bg-base-200/40"
+							class="label cursor-pointer justify-start gap-4 p-4 border border-base-300 rounded-lg bg-base-200/40 items-center"
 						>
-							<input type="checkbox" bind:checked={ada_anak} class="checkbox checkbox-primary" />
-							<div>
+							<input
+								type="checkbox"
+								bind:checked={ada_anak}
+								class="checkbox checkbox-primary shrink-0"
+							/>
+							<div class="flex-1">
 								<span class="label-text font-semibold block">Ada Anak Kecil di Rumah</span>
-								<span class="label-text-alt opacity-60"
+								<span class="label-text-alt opacity-60 whitespace-normal block mt-0.5"
 									>Rekomendasikan tanaman yang aman (tidak tajam/berduri)</span
 								>
 							</div>
