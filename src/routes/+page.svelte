@@ -16,7 +16,7 @@
 			<img
 				src="/mascot.png"
 				alt="TaniPakar Mascot"
-				class="w-72 md:w-80 h-auto object-contain select-none pointer-events-none -translate-y-6"
+				class="w-72 md:w-80 h-auto object-contain select-none pointer-events-none -translate-y-10"
 			/>
 
 			<!-- Button in front of the mascot -->
