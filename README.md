@@ -20,15 +20,15 @@
 
 ### Output Tanaman
 
-| Tanaman     | Gambar                                          |
-| ----------- | ----------------------------------------------- |
-| Cabai       | ![Cabai](static/plants/cabai.png)               |
-| Tomat       | ![Tomat](static/plants/tomat.png)               |
-| Terong      | ![Terong](static/plants/terong.png)             |
-| Kangkung    | ![Kangkung](static/plants/kangkung.png)         |
-| Daun Bawang | ![Daun Bawang](static/plants/daun_bawang.png)   |
-| Bayam       | ![Bayam](static/plants/bayam.png)               |
-| Selada      | ![Selada](static/plants/selada.png)             |
+| Tanaman     | Gambar                                                                             |
+| ----------- | ---------------------------------------------------------------------------------- |
+| Cabai       | <img src="static/plants/cabai.png" width="80" alt="Cabai">                        |
+| Tomat       | <img src="static/plants/tomat.png" width="80" alt="Tomat">                        |
+| Terong      | <img src="static/plants/terong.png" width="80" alt="Terong">                      |
+| Kangkung    | <img src="static/plants/kangkung.png" width="80" alt="Kangkung">                  |
+| Daun Bawang | <img src="static/plants/daun_bawang.png" width="80" alt="Daun Bawang">            |
+| Bayam       | <img src="static/plants/bayam.png" width="80" alt="Bayam">                        |
+| Selada      | <img src="static/plants/selada.png" width="80" alt="Selada">                      |
 
 ---
 
