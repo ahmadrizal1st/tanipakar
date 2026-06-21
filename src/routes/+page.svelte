@@ -38,7 +38,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 			<!-- Step 1 info -->
 			<div
-				class="card bg-primary text-primary-content relative overflow-hidden p-6 space-y-3 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group border-0 rounded-2xl"
+				class="card bg-primary text-primary-content relative overflow-hidden p-6 space-y-3 border-0 rounded-2xl shadow-sm"
 			>
 				<!-- Large Watermark Icon in background -->
 				<svg
@@ -49,7 +49,7 @@
 					stroke-width="1.2"
 					stroke-linecap="round"
 					stroke-linejoin="round"
-					class="absolute -top-6 -right-6 w-32 h-32 text-white/10 pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500"
+					class="absolute -top-6 -right-6 w-32 h-32 text-white/10 pointer-events-none"
 				>
 					<path
 						d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0Z"
@@ -82,7 +82,7 @@
 
 			<!-- Step 2 info -->
 			<div
-				class="card bg-primary text-primary-content relative overflow-hidden p-6 space-y-3 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group border-0 rounded-2xl"
+				class="card bg-primary text-primary-content relative overflow-hidden p-6 space-y-3 border-0 rounded-2xl shadow-sm"
 			>
 				<!-- Large Watermark Icon in background -->
 				<svg
@@ -93,7 +93,7 @@
 					stroke-width="1.2"
 					stroke-linecap="round"
 					stroke-linejoin="round"
-					class="absolute -top-6 -right-6 w-32 h-32 text-white/10 pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500"
+					class="absolute -top-6 -right-6 w-32 h-32 text-white/10 pointer-events-none"
 				>
 					<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
 				</svg>
@@ -126,7 +126,7 @@
 
 			<!-- Step 3 info -->
 			<div
-				class="card bg-primary text-primary-content relative overflow-hidden p-6 space-y-3 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group border-0 rounded-2xl"
+				class="card bg-primary text-primary-content relative overflow-hidden p-6 space-y-3 border-0 rounded-2xl shadow-sm"
 			>
 				<!-- Large Watermark Icon in background -->
 				<svg
@@ -137,7 +137,7 @@
 					stroke-width="1.2"
 					stroke-linecap="round"
 					stroke-linejoin="round"
-					class="absolute -top-6 -right-6 w-32 h-32 text-white/10 pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500"
+					class="absolute -top-6 -right-6 w-32 h-32 text-white/10 pointer-events-none"
 				>
 					<path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" /><path
 						d="m9 12 2 2 4-4"
