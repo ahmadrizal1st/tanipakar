@@ -39,22 +39,7 @@
 				href="/"
 				class="text-xl font-semibold tracking-tight text-primary flex items-center gap-2 hover:opacity-80 transition-opacity"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					class="lucide lucide-sprout"
-				>
-					<path d="M7 20h10" />
-					<path d="M10 20c5.5-2.5 8-6.4 8-12a4 4 0 0 0-8 0c0 5.6 2.5 9.5 8 12Z" />
-					<path d="M14 20c-5.5-2.5-8-6.4-8-12a4 4 0 0 1 8 0c0 5.6-2.5 9.5-8 12Z" />
-				</svg>
+				<img src="/logo.png" alt="TaniPakar Logo" class="w-6 h-6 object-contain" />
 				TaniPakar
 			</a>
 		</div>

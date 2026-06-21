@@ -1,18 +1,33 @@
 <div class="space-y-12 py-6">
 	<!-- Hero Section -->
-	<div class="text-center space-y-4 max-w-2xl mx-auto">
-		<h1 class="text-4xl font-extrabold tracking-tight text-base-content md:text-5xl">
-			Rekomendasi Tanaman Pekarangan Terbaik
-		</h1>
-		<p class="text-base text-base-content/70 leading-relaxed">
-			Maksimalkan potensi pekarangan rumah Anda. Sistem pakar kami menganalisis kondisi lingkungan,
-			kapasitas perawatan, dan tujuan finansial Anda menggunakan 39 aturan rekomendasi pertanian
-			yang akurat.
-		</p>
-		<div class="pt-4">
-			<a href="/konsultasi" class="btn btn-primary btn-lg px-8 font-semibold shadow-sm">
-				Mulai Konsultasi
-			</a>
+	<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 max-w-4xl mx-auto py-4">
+		<!-- Left: Text content -->
+		<div class="flex-1 space-y-5 text-center md:text-left">
+			<h1
+				class="text-4xl font-extrabold tracking-tight text-base-content md:text-5xl leading-tight"
+			>
+				Rekomendasi Tanaman Pekarangan Terbaik
+			</h1>
+			<p class="text-base text-base-content/70 leading-relaxed">
+				Maksimalkan potensi pekarangan rumah Anda. Sistem pakar kami menganalisis kondisi
+				lingkungan, kapasitas perawatan, dan tujuan finansial Anda menggunakan 39 aturan rekomendasi
+				pertanian yang akurat.
+			</p>
+			<div class="pt-2">
+				<a
+					href="/konsultasi"
+					class="btn btn-primary btn-lg px-8 font-semibold shadow-sm w-full sm:w-auto"
+				>
+					Mulai Konsultasi
+				</a>
+			</div>
+		</div>
+
+		<!-- Right: Mascot Image -->
+		<div
+			class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 bg-base-100 border border-base-300 rounded-2xl overflow-hidden shadow-sm flex items-center justify-center p-2"
+		>
+			<img src="/mascot.png" alt="TaniPakar Mascot" class="w-full h-full object-cover rounded-xl" />
 		</div>
 	</div>
 
