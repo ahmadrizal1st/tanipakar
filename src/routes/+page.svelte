@@ -11,16 +11,18 @@
 		</p>
 
 		<!-- Mascot and Button Overlay Container -->
-		<div class="relative flex flex-col items-center w-full max-w-sm pb-6 mt-4">
-			<!-- Mascot standing behind (no border, no cropping, enlarged and shifted up) -->
+		<div
+			class="relative flex flex-col items-center w-full max-w-xl md:max-w-2xl -mt-6 md:-mt-10 -mb-36"
+		>
+			<!-- Mascot standing behind (no border, no cropping, enlarged) -->
 			<img
 				src="/mascot.png"
 				alt="TaniPakar Mascot"
-				class="w-72 md:w-80 h-auto object-contain select-none pointer-events-none -translate-y-10"
+				class="w-full max-w-lg md:max-w-xl h-auto object-contain select-none pointer-events-none"
 			/>
 
-			<!-- Button in front of the mascot -->
-			<div class="absolute bottom-0 z-10 w-full flex justify-center">
+			<!-- Button in front of the mascot, overlapping the pot area -->
+			<div class="absolute bottom-20 z-10 w-full flex justify-center">
 				<a href="/konsultasi" class="btn btn-primary btn-lg px-12 font-semibold shadow-lg">
 					Mulai Konsultasi
 				</a>
