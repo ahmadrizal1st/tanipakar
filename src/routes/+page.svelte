@@ -10,13 +10,6 @@
 			yang akurat.
 		</p>
 
-		<!-- Mascot Image - Centered -->
-		<div
-			class="w-44 h-44 md:w-52 md:h-52 bg-base-100 border border-base-300 rounded-2xl overflow-hidden shadow-xs flex items-center justify-center p-1.5"
-		>
-			<img src="/mascot.png" alt="TaniPakar Mascot" class="w-full h-full object-cover rounded-xl" />
-		</div>
-
 		<div class="pt-2">
 			<a
 				href="/konsultasi"
@@ -25,6 +18,13 @@
 				Mulai Konsultasi
 			</a>
 		</div>
+
+		<!-- Mascot Image - Centered below button, no border -->
+		<img
+			src="/mascot.png"
+			alt="TaniPakar Mascot"
+			class="w-44 h-44 md:w-52 md:h-52 object-cover rounded-2xl mt-4"
+		/>
 	</div>
 
 	<!-- How it works -->
